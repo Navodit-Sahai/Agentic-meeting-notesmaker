@@ -1,0 +1,19 @@
+# UI
+streamlit
+
+# Langchain core + Google Gemini integration
+langchain
+google-generativeai
+
+# Google Speech-to-Text
+google-cloud-speech
+
+# Audio processing
+pydub
+ffmpeg-python
+pyAudio
+
+# Utils
+python-dotenv  # for API keys
+
+
