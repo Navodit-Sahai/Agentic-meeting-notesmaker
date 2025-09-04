@@ -18,7 +18,7 @@ def generate_summary(transcript_text: str) -> str:
     """
 
     prompt = PromptTemplate(input_variables=["transcript"], template=template)
-    llm = ChatGroq(model_name="llama3-70b-8192")
+    llm = ChatGroq(model_name="llama-3.3-70b-versatile")
     chain = prompt | llm | StrOutputParser()
     response = chain.invoke({"transcript": transcript_text})
     return response
