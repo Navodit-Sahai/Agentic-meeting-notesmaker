@@ -1,19 +1,24 @@
+
 # UI
 streamlit
 
-# Langchain core + Google Gemini integration
+# LangChain and LLM handling
 langchain
-google-generativeai
-
-# Google Speech-to-Text
-google-cloud-speech
+langchain-groq
+langchain-core
 
 # Audio processing
 pydub
-ffmpeg-python
-pyAudio
+SpeechRecognition
+PyAudio
+
+# FastAPI for backend
+fastapi
+uvicorn
+pydantic
 
 # Utils
-python-dotenv  # for API keys
+python-dotenv
 
-
+# Audio codec support
+ffmpeg-python
