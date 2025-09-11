@@ -1,30 +1,30 @@
 from pydub import AudioSegment
 import speech_recognition as sr
 import os
+import tempfile
 
 def transcribe_audio(input_audio_path: str) -> str:
-    
+    # Convert audio to the right format
     audio = AudioSegment.from_file(input_audio_path)
     audio = audio.set_frame_rate(16000).set_channels(1)
     
-    
-    temp_wav = "temp_converted.wav"
-    audio.export(temp_wav, format="wav")
+    # Use temporary file with proper cleanup
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_wav:
+        audio.export(temp_wav.name, format="wav")
+        temp_wav_path = temp_wav.name
     
     try:
         r = sr.Recognizer()
-        with sr.AudioFile(temp_wav) as source:
+        with sr.AudioFile(temp_wav_path) as source:
             audio_data = r.record(source)
         
         text = r.recognize_google(audio_data)
-        
-        
-        with open("transcripts.txt", "w", encoding="utf-8") as f:
-            f.write(text)
-        
         return text
     
+    except Exception as e:
+        raise Exception(f"Transcription failed: {str(e)}")
+    
     finally:
-        # Clean up temporary file
-        if os.path.exists(temp_wav):
-            os.unlink(temp_wav)
+        
+        if os.path.exists(temp_wav_path):
+            os.unlink(temp_wav_path)

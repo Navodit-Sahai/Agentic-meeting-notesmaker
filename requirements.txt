@@ -10,15 +10,6 @@ langchain-core
 # Audio processing
 pydub
 SpeechRecognition
-PyAudio
-
-# FastAPI for backend
-fastapi
-uvicorn
-pydantic
 
 # Utils
 python-dotenv
-
-# Audio codec support
-ffmpeg-python
